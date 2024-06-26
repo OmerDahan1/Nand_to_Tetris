@@ -1,2 +1,2 @@
 # Nand_to_Tetris
-This repository features my solutions in Java for the 'Nand to Tetris' course, where I built a complete computer system from basic logic gates to high-level programming.
+This repository showcases my journey through the 'Nand to Tetris: Building a Modern Computer from First Principles' course, where I meticulously crafted solutions and implementations. Beginning with fundamental logic gates, I systematically developed a comprehensive computer system, culminating in high-level programming capabilities. This project represents my deep dive into understanding the intricate layers of computer architecture and software development, from the bare essentials to advanced functionalities.
