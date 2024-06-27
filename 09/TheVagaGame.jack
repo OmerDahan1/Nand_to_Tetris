@@ -1,0 +1,80 @@
+class TheVagaGame {
+    /* The StickHero object representing the hero in the game */
+    field StickHero stickHero;
+
+    /* The current score of the player */
+    field int score;
+
+    /* 
+     * Constructor for the TheVagaGame class
+     * Initializes the stickHero and score fields with default values
+     */
+    constructor TheVagaGame new() { 
+        let stickHero = StickHero.new();
+        let score = 1;
+        return this;
+    }
+    
+    /* Disposes the current game and frees up memory before starting a new game */
+    method void dispose() {
+        do stickHero.dispose();
+        do Memory.deAlloc(this);
+        return;                       
+    }
+
+    /**
+     * The main loop for running the game
+     * Prints instructions, waits for user input, and handles game logic
+     */
+    method void run() {
+        var char key;
+        var boolean loopDecider; // When loopDecider is true, the 1st while loop continues to work.
+        do stickHero.draw();
+        let loopDecider = false;
+        do Output.printString("Help our hero navigate a dangerous cliff by pressing space to   fly and stopping when above the safe cliff. Good luck!");
+        while(~loopDecider) {
+            while(~(Keyboard.keyPressed() = 32)) {
+                    let key = Keyboard.keyPressed();
+                }
+
+            while((Keyboard.keyPressed() = 32) & (stickHero.getHeroX2() < 510)) { // While the key I pressed is 'space' which mentions "start", keep increment the stickHero position.  
+                    do stickHero.eraseHero();
+                    do stickHero.heroInc();
+                    do stickHero.drawHero();
+                    do Sys.wait(2); // wait for 0.5 second before continues the while loop and the incrementation.
+                }
+                    if ((stickHero.getHeroX1() > (stickHero.getGapX1())) & ((stickHero.getHeroX2()) < (stickHero.getGapX2()))) { // When the player wins.
+                        do Output.moveCursor(3,0);
+                        do Output.printString("Exactly, Keep going!");
+                        do Output.moveCursor(4,0);
+                        do Output.printString("Your score is: ");
+                        do Output.printInt(score);
+                        let score = score + 1;
+                    } 
+                    else { // When the plyaer loses.
+                        do Output.moveCursor(3,0);
+                        do Output.printString("Game Over!"); // If the hero is not above the gapCliff - player lost and the game is over.
+                        let score = 1;
+                    }
+                    let loopDecider = true; // Finish of the 1st loop. 
+                }
+            // }
+                do Sys.wait(2000);
+                do update();
+                do run(); // Recusive running to able the player play as many games as he wishes. 
+                return;
+            }
+
+    /* After running 1 game, the game is being initilized by the update function:
+    1. StickHero returns to its original place.
+    2. The cliff that the StickHero stand on top of, stays the same because the game doesn't involve it.
+    3. MoveCurser to the original position.
+    */ 
+    method void update() {
+        var StickHero resetedStickHero;
+        let resetedStickHero = StickHero.new();
+        let stickHero = resetedStickHero; 
+        do Output.moveCursor(0,0);
+        return; 
+    }
+}

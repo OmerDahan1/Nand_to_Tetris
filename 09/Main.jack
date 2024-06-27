@@ -1,0 +1,15 @@
+
+/* Main class
+ * The Main class contains the main function, which is the entry point of the program.
+ * Rules are placed on the screen when the player is playing!
+ */
+
+class Main {
+   function void main() {
+      var TheVagaGame game;
+      let game = TheVagaGame.new();
+      do game.run();
+      do game.dispose();
+      return;
+   }
+}

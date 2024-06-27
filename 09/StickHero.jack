@@ -1,0 +1,130 @@
+/*
+This is a class called StickHero which appears to be a representation of a stick figure game.
+The class has several fields, including heroX1, heroY1, heroX2, and heroY2 which represent the coordinates of the hero.
+The cliffX1, cliffY1, cliffX2, and cliffY2 fields represent the coordinates of the cliff, and gapX1, gapY1, gapX2, and gapY2 represent the coordinates of the gap.
+The gameOver field is a boolean value representing whether the game is over or not.
+
+The class has a constructor called new() which sets initial values for all of the fields. The class also has several methods:
+
+getHeroX1() and getHeroX2() return the hero's coordinates.
+getGapX1() and getGapX2() return the gap's coordinates.
+dispose() deallocates memory.
+draw() is used to draw the hero, the gap, and the cliff.
+drawHero() is used to redraw the hero.
+erase() is used to erase the hero, the gap and the cliff.
+eraseHero() is used to erase the hero.
+heroInc() is used to increment the x coordinate of the hero by 2 units at a time and it will stop when the x coordinate reach 508.
+*/
+
+class StickHero {
+
+    /* The x and y coordinates of the hero */
+    field int heroX1;
+    field int heroY1;
+    field int heroX2;
+    field int heroY2;
+
+    /* The x and y coordinates of the cliff */
+    field int cliffX1;
+    field int cliffY1;
+    field int cliffX2;
+    field int cliffY2;
+
+    /* The x and y coordinates of the gap */
+    field int gapX1;
+    field int gapY1;
+    field int gapX2;
+    field int gapY2;
+
+    /**
+     * The constructor for the StickHero class
+     * Initializes all fields with default values
+     */
+    constructor StickHero new() {
+        let heroX1 = 11;
+        let heroY1 = 113;
+        let heroX2 = 25;
+        let heroY2 = 127;
+        let cliffX1 = 1;
+        let cliffY1 = 128;
+        let cliffX2 = 35;
+        let cliffY2 = 254;
+        let gapX1 = 420;
+        let gapY1 = 128;
+        let gapX2 = gapX1 + 34;
+        let gapY2 = 254;
+        return this;
+    }
+
+    /* Returns the x coordinate of the hero's left side */
+    method int getHeroX1() {
+        return heroX1;
+    }
+
+    /* Returns the x coordinate of the hero's right side */
+    method int getHeroX2() {
+        return heroX2;
+    }
+
+    /* Returns the x coordinate of the left side of the gap */
+    method int getGapX1() {
+        return gapX1;
+    }
+
+    /*Returns the x coordinate of the right side of the gap */
+    method int getGapX2() {
+       return gapX2;
+    }
+
+   /* Deallocates memory used by the object */
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
+    
+    /*Draws the hero, the gap, and the cliff */
+    method void draw() {
+        do Screen.clearScreen();
+            do Screen.setColor(true);
+            do Screen.drawRectangle(gapX1, gapY1, gapX2, gapY2); 
+            do Screen.drawRectangle(cliffX1, cliffY1, cliffX2 , cliffY2); 
+            do Screen.drawRectangle(heroX1, heroY1, heroX2, heroY2); 
+        return;
+    }
+    
+    /* Draws only the hero */
+    method void drawHero() {
+       do Screen.setColor(true);
+       do Screen.drawRectangle(heroX1, heroY1, heroX2, heroY2); 
+       return;
+    }
+    
+    /* Erases the hero, the gap and the cliff */
+    method void erase() {
+        do Screen.setColor(false); 
+        do Screen.drawRectangle(gapX1, gapY1, gapX2, gapY2); 
+            do Screen.drawRectangle(cliffX1, cliffY1, cliffX2 , cliffY2); 
+            do Screen.drawRectangle(heroX1, heroY1, heroX2, heroY2); 
+        return;
+    }
+
+    /* Erases the hero*/
+    method void eraseHero() {
+       do Screen.setColor(false);
+       do Screen.drawRectangle(heroX1, heroY1, heroX2, heroY2); 
+       return;
+    }
+
+    /**
+     * Increment the x coordinate of the hero by 2 units
+     * If the hero's x coordinate reach to 508 
+     * stop the increment.
+     */
+    method void heroInc() {
+    if (((heroX2) < 508)) {
+            let heroX2 = heroX2 + 2;
+            let heroX1 = heroX1 + 2;
+        }
+        return;
+    }
+}

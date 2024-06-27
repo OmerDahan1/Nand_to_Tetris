@@ -1,0 +1,164 @@
+function StickHero.new 0
+push constant 12
+call Memory.alloc 1
+pop pointer 0
+push constant 11
+pop this 0
+push constant 113
+pop this 1
+push constant 25
+pop this 2
+push constant 127
+pop this 3
+push constant 1
+pop this 4
+push constant 128
+pop this 5
+push constant 35
+pop this 6
+push constant 254
+pop this 7
+push constant 420
+pop this 8
+push constant 128
+pop this 9
+push this 8
+push constant 34
+add
+pop this 10
+push constant 254
+pop this 11
+push pointer 0
+return
+function StickHero.getHeroX1 0
+push argument 0
+pop pointer 0
+push this 0
+return
+function StickHero.getHeroX2 0
+push argument 0
+pop pointer 0
+push this 2
+return
+function StickHero.getGapX1 0
+push argument 0
+pop pointer 0
+push this 8
+return
+function StickHero.getGapX2 0
+push argument 0
+pop pointer 0
+push this 10
+return
+function StickHero.dispose 0
+push argument 0
+pop pointer 0
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return
+function StickHero.draw 0
+push argument 0
+pop pointer 0
+call Screen.clearScreen 0
+pop temp 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push this 8
+push this 9
+push this 10
+push this 11
+call Screen.drawRectangle 4
+pop temp 0
+push this 4
+push this 5
+push this 6
+push this 7
+call Screen.drawRectangle 4
+pop temp 0
+push this 0
+push this 1
+push this 2
+push this 3
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+return
+function StickHero.drawHero 0
+push argument 0
+pop pointer 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push this 0
+push this 1
+push this 2
+push this 3
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+return
+function StickHero.erase 0
+push argument 0
+pop pointer 0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push this 8
+push this 9
+push this 10
+push this 11
+call Screen.drawRectangle 4
+pop temp 0
+push this 4
+push this 5
+push this 6
+push this 7
+call Screen.drawRectangle 4
+pop temp 0
+push this 0
+push this 1
+push this 2
+push this 3
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+return
+function StickHero.eraseHero 0
+push argument 0
+pop pointer 0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push this 0
+push this 1
+push this 2
+push this 3
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+return
+function StickHero.heroInc 0
+push argument 0
+pop pointer 0
+push this 2
+push constant 508
+lt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 2
+push constant 2
+add
+pop this 2
+push this 0
+push constant 2
+add
+pop this 0
+label IF_FALSE0
+push constant 0
+return
